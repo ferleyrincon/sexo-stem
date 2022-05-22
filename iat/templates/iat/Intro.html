@@ -30,17 +30,19 @@ table.stimuli th {
 
 {% block content %}
     <p>
-        We will show you several words that you should assign to the respective categories.
+        Se le mostrarán varias PALABRAS que usted debe clasificar en su respectivo GRUPO.<br>
 
-        Please press either the key <span class="key">{{ Constants.capture_keycodes.left.1 }}</span> or the key
-        <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> on your keyboard.<br>
-        You should assign the following words to the following categories:
+        <i>Para clasificar las palabras puede presionar la Tecla <b><span class="key">{{ Constants.capture_keycodes.left.1 }}</span></b> o la Tecla 
+        <b><span class="key">{{ Constants.capture_keycodes.right.1 }}</span></b> en su teclado.</i>
+    </p>
+    <p>
+        Usted debe clasificar las siguientes PALABRAS en los siguientes GRUPOS:
     </p>
 
     <table class="stimuli">
         <tr>
-            <th>Category</th>
-            <th>Word</th>
+            <th>GRUPO</th>
+            <th>PALABRAS</th>
         </tr>
         {% for stim in stimuli %}
             <tr>
@@ -51,7 +53,7 @@ table.stimuli th {
     </table>
 
     <p>
-        There are {{ Constants.num_rounds }} parts for which the instructions change. Please stay alert!
+        Hay {{ Constants.num_rounds }} partes para las que las instrucciones cambian. Preste mucha atención.
     </p>
 
     {% next_button %}

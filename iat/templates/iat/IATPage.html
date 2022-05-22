@@ -122,7 +122,7 @@
 <input id="input_response_times" name="response_times" type="hidden" value="">
 
 <div id="progress_container">
-    Progress:
+    Avance:
     <div id="progress_bar_container">
         <div id="progress_bar"></div>
     </div>
@@ -132,11 +132,11 @@
 <div id="key_instructions">
     {% for side in instructions %}
         <div class="{{ side.side }}">
-            <p class="press_key">Press <span class="key">{{ side.key }}</span> for</p>
+            <p class="press_key">Presione <span class="key">{{ side.key }}</span> para</p>
             {% for class in side.classes %}
                 <p class="class {{ class.class }}">{{ class.label }}</p>
                 {% if side.classes|length > 1 and not forloop.last %}
-                    <p class="conj">or</p>
+                    <p class="conj">o</p>
                 {% endif %}
             {% endfor %}
         </div>
@@ -145,23 +145,23 @@
 
 <div style="clear:left"></div>
 
-<div id="submit_data_notice">Data is being transmitted...</div>
+<div id="submit_data_notice">Sus respuestas están siendo enviadas...</div>
 
 <div id="stimulus" class="class names"></div>
 
 <div id="feedback">
     <p class="red_x">X</p>
-    <p class="hint">Press the other key to continue.</p>
+    <p class="hint">Presione otra tecla para continuar</p>
 </div>
 
 <div id="start_instructions">
-    <h3>Part {{ player.round_number }} of {{ Constants.num_rounds }}</h3>
+    <h3>Parte {{ player.round_number }} de {{ Constants.num_rounds }}</h3>
 
 
     {% if player.round_number == 1 %}
         <p>
-            Put your index finger on the keys <span class="key">{{ Constants.capture_keycodes.left.1 }}</span>
-            and <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> to be able to react quickly.
+            Ponga sus dedos INDICE en las teclas <span class="key">{{ Constants.capture_keycodes.left.1 }}</span>
+            y <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> para que puede responder rápidamente.
         </p>
     {% endif %}
 
@@ -171,13 +171,13 @@
 
     <p class="keys">
         {% for side in instructions %}
-            Press <span class="key">{{ side.key }}</span> for words, that belong to the
-            {% if side.classes|length == 1  %}category{% else %}categories{% endif %}
+            Presiones <span class="key">{{ side.key }}</span> para palabras que pertenecen
+            {% if side.classes|length == 1  %}al grupo{% else %}a los grupos{% endif %}
 
             {% for class in side.classes %}
                 <span class="class {{ class.class }}">{{ class.label }}</span>
                 {% if side.classes|length > 1 and not forloop.last %}
-                    or
+                    o
                 {% endif %}
             {% endfor %}
 
@@ -186,17 +186,17 @@
     </p>
 
     {% if player.round_number == 1 %}
-        <p>We will display one word after another.</p>
+        <p>Le mostraremos una palabra después de la otra</p>
     {% endif %}
 
     <p>
-        When you make a mistake, a red <span class="red_x">X</span> will appear. Press the other key to continue.<br>
+        Cuando presione la letra INCORRECTA, una <span class="red_x">X</span> roja aparecerá. Presione la otra tecla para continuar.<br>
 
-        Try to match the words <span style="text-decoration: underline">as quickly as possible</span>.
+        Trate de clasificar las palabras <span style="text-decoration: underline">tan rápido como pueda</span>.
     </p>
 
     <p style="text-align: center">
-        Press <span class="key">SPACE</span>, in order to start with part {{ player.round_number }}.
+        Presione la <span class="key">BARRA ESPACIADORA</span>, para comenzar con la parte {{ player.round_number }}.
     </p>
 
     {% next_button %}
@@ -211,7 +211,7 @@ var phase = 0;    // can be: 0 = start, 1 = trials, 2 = end
 var expect_keycode = null;
 
 // create array of trial data: each row contains trial ID, trial stimulus, stimulus class (words/names), stimulus
-// level (e.g pos/neg or tr/dt)
+// level (e.g woman/man or tr/dt)
 var trials = [
     {% for t in trials %}
         [{{ t.pk }}, '{{ t.stimulus }}', '{{ t.stimulus_class }}', '{{ t.stimulus_level }}'],

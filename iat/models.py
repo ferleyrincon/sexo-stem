@@ -131,7 +131,6 @@ BLOCKS = [
     },
 ]
 
-posneg
 class Constants(BaseConstants):
     name_in_url = 'iat'
     players_per_group = None
