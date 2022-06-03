@@ -18,6 +18,7 @@ import random
 # required for custom data models:
 from otree.db.models import Model, ForeignKey
 from otree.export import sanitize_for_csv
+from otreeutils.admin_extensions import custom_export
 
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer,
