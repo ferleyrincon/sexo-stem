@@ -237,12 +237,14 @@ try:
     from otreeutils.admin_extensions import custom_export
 except ImportError:
     def custom_export(players):
+        print("Error de importación")
         """
         Export all IAT trials together with the standard fields `session` and `participant_code`
         """
         fields_to_export = ['block', 'trial', 'stimulus', 'stimulus_class', 'stimulus_level',
                             'response_key', 'response_correct', 'response_time_ms']
         yield ['session', 'participant_code'] + fields_to_export
+        print("fields to export", fields_to_export)
         for trial in Trial.objects.all():
             yield [trial.player.session.code, trial.player.participant.code] \
                 + [sanitize_for_csv(getattr(trial, f)) for f in fields_to_export]
