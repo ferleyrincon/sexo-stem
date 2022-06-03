@@ -39,6 +39,7 @@ ROOMS = []
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'es'
+TIME_ZONE = 'UTC'
 
 # e.g. EUR, GBP, CNY, JPY
 REAL_WORLD_CURRENCY_CODE = 'COP'
