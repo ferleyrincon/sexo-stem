@@ -225,17 +225,19 @@ function advanceProgressBar() {
 
     <p class="keys">
         {% for side in instructions %}
-            Presiones <span class="key">{{ side.key }}</span> para palabras que pertenecen
-            {% if side.classes|length == 1  %}al grupo{% else %}a los grupos{% endif %}
+            {% if side.side != "center" %}
+                Presiones <span class="key">{{ side.key }}</span> para palabras que pertenecen
+                {% if side.classes|length == 1  %}al grupo{% else %}a los grupos{% endif %}
 
-            {% for class in side.classes %}
-                <span class="class {{ class.class }}">{{ class.label }}</span>
-                {% if side.classes|length > 1 and not forloop.last %}
-                    o
-                {% endif %}
-            {% endfor %}
+                {% for class in side.classes %}
+                    <span class="class {{ class.class }}">{{ class.label }}</span>
+                    {% if side.classes|length > 1 and not forloop.last %}
+                        o
+                    {% endif %}
+                {% endfor %}
 
-            {% if not forloop.last %}<br>{% endif %}
+                {% if not forloop.last %}<br>{% endif %}
+            {% endif %}
         {% endfor %}
     </p>
 
