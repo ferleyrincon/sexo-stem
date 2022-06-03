@@ -1,208 +1,12 @@
 {% extends "iat/Page.html" %}
 {% load otree static %}
 
-{# Implicit Association Test IAT experiment #}
-{# November 2019, Markus Konrad <markus.konrad@wzb.eu> #}
-
-
-{% block app_styles %}
-
-{{ block.super}}
-
-<style>
-
-.otree-btn-next {
-    display: none;
-}
-
-#progress_container {
-    width: 100%;
-    height: 20px;
-    margin-bottom: 2em;
-}
-
-#progress_bar_container {
-    width: 80%;
-    height: 20px;
-    border: 1px solid black;
-    float: right;
-}
-
-#progress_bar {
-    width: 0;
-    height: 18px;
-    background: darkgray;
-}
-
-
-#key_instructions {
-    width: 100%;
-}
-
-#key_instructions .left {
-    width: 50%;
-    float: left;
-}
-
-#key_instructions .right {
-    width: 50%;
-    float: left;
-    text-align: right;
-}
-
-#key_instructions .press_key {
-    color: gray;
-    margin: 0;
-}
-
-#key_instructions .class,
-#key_instructions .conj {
-    font-size: 1.7em;
-    margin: 0;
-}
-
-#key_instructions .class {
-    font-weight: bold;
-}
-
-#start_instructions {
-    margin-top: 3em;
-}
-
-#start_instructions h3 {
-    text-align: center;
-    font-size: 1em;
-    text-decoration: underline;
-    font-weight: normal;
-}
-
-#stimulus, #feedback, #submit_data_notice {
-    display: none;
-    margin: auto;
-    width: 50%;
-    text-align: center;
-}
-
-#stimulus {
-    font-weight: bold;
-    font-size: 3em;
-    margin-top: 1.5em;
-}
-
-#feedback .red_x {
-    font-size: 6em;
-}
-
-.class.attributes {
-    color: darkblue;
-}
-
-.class.concepts {
-    color: darkgreen;
-}
-
-.red_x {
-    font-weight: bold;
-    color: red;
-}
-
-</style>
-
-{% endblock %}
-
-
-{% block title %}{% endblock %}
-
-{% block content %}
-
-{# submit data is stored in these hidden inputs as comma separated values strings #}
-<input id="input_trial_ids" name="trial_ids" type="hidden" value="">
-<input id="input_responses" name="responses" type="hidden" value="">
-<input id="input_response_correct" name="responses_correct" type="hidden" value="">
-<input id="input_response_times" name="response_times" type="hidden" value="">
-
-<div id="progress_container">
-    Avance:
-    <div id="progress_bar_container">
-        <div id="progress_bar"></div>
-    </div>
-    <div style="clear: right"></div>
-</div>
-
-<div id="key_instructions">
-    {% for side in instructions %}
-        <div class="{{ side.side }}">
-            <p class="press_key">Presione <span class="key">{{ side.key }}</span> para</p>
-            {% for class in side.classes %}
-                <p class="class {{ class.class }}">{{ class.label }}</p>
-                {% if side.classes|length > 1 and not forloop.last %}
-                    <p class="conj">o</p>
-                {% endif %}
-            {% endfor %}
-        </div>
-    {% endfor %}
-</div>
-
-<div style="clear:left"></div>
-
-<div id="submit_data_notice">Sus respuestas están siendo enviadas...</div>
-
-<div id="stimulus" class="class names"></div>
-
-<div id="feedback">
-    <p class="red_x">X</p>
-    <p class="hint">Presione otra tecla para continuar</p>
-</div>
-
-<div id="start_instructions">
-    <h3>Parte {{ player.round_number }} de {{ Constants.num_rounds }}</h3>
-
-
-    {% if player.round_number == 1 %}
-        <p>
-            Ponga sus dedos INDICE en las teclas <span class="key">{{ Constants.capture_keycodes.left.1 }}</span>
-            y <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> para que puede responder rápidamente.
-        </p>
-    {% endif %}
-
-    {% if block_def.notice %}
-        <p style="font-weight: bold">{{ block_def.notice }}</p>
-    {% endif %}
-
-    <p class="keys">
-        {% for side in instructions %}
-            Presiones <span class="key">{{ side.key }}</span> para palabras que pertenecen
-            {% if side.classes|length == 1  %}al grupo{% else %}a los grupos{% endif %}
-
-            {% for class in side.classes %}
-                <span class="class {{ class.class }}">{{ class.label }}</span>
-                {% if side.classes|length > 1 and not forloop.last %}
-                    o
-                {% endif %}
-            {% endfor %}
-
-            {% if not forloop.last %}<br>{% endif %}
-        {% endfor %}
-    </p>
-
-    {% if player.round_number == 1 %}
-        <p>Le mostraremos una palabra después de la otra</p>
-    {% endif %}
-
-    <p>
-        Cuando presione la letra INCORRECTA, una <span class="red_x">X</span> roja aparecerá. Presione la otra tecla para continuar.<br>
-
-        Trate de clasificar las palabras <span style="text-decoration: underline">tan rápido como pueda</span>.
-    </p>
-
-    <p style="text-align: center">
-        Presione la <span class="key">BARRA ESPACIADORA</span>, para comenzar con la parte {{ player.round_number }}.
-    </p>
-
-    {% next_button %}
-</div>
-
-<script>
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'css/iat.css' %}" rel="stylesheet">
+    <!-- functions and more javascript -->
+    <script src="{% static 'js/iat.js' %}"></script>
+    <script>
 var KEYCODES_SIDES = {{ keycodes_sides|json }};
 var SIDES_KEYCODES = {{ sides_keycodes|json }};
 var STIMULUS_LEVEL_SIDES = {{ stimulus_level_sides|json }};
@@ -227,7 +31,6 @@ var trial_ids = [];
 var response_keys = [];
 var response_times = [];
 var response_correct = [];
-
 
 $(function () {
     document.onkeydown = function (event) {
@@ -278,6 +81,7 @@ $(function () {
         }
     }
 });
+
 
 function prepareNextTrial() {
     $('#feedback').hide();
@@ -349,5 +153,107 @@ function advanceProgressBar() {
 {% endif %}
 
 </script>
+{% endblock %}
+
+{# Implicit Association Test IAT experiment #}
+{# November 2019, Markus Konrad <markus.konrad@wzb.eu> #}
+
+{% block content %}
+
+{# submit data is stored in these hidden inputs as comma separated values strings #}
+<input id="input_trial_ids" name="trial_ids" type="hidden" value="">
+<input id="input_responses" name="responses" type="hidden" value="">
+<input id="input_response_correct" name="responses_correct" type="hidden" value="">
+<input id="input_response_times" name="response_times" type="hidden" value="">
+
+<div id="progress_container">
+    Avance:
+    <div id="progress_bar_container">
+        <div id="progress_bar"></div>
+    </div>
+    <div style="clear: right"></div>
+</div>
+
+<div id="key_instructions">
+    <table class="table_decision">
+        <tr>
+            
+        {% for side in instructions %}
+            <td class="{{ side.side }}">
+                {% if side.side == "center" %}
+                    <div id="stimulus" class="class names"></div>
+                {% else %}
+                    <p class="press_key">Presione <span class="key">{{ side.key }}</span> para</p>
+                    {% for class in side.classes %}
+                    <img src="{% static 'images/' %}{{ class.image }}" class="class_image">
+                    <p class="class {{ class.class }}">{{ class.label }}</p>
+                        {% if side.classes|length > 1 and not forloop.last %}
+                            
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+            </td>
+        {% endfor %}
+        </tr>
+    </table>
+
+</div>
+
+<div style="clear:left"></div>
+
+<div id="submit_data_notice">Sus respuestas están siendo enviadas...</div>
+
+<div id="feedback">
+    <p class="red_x">X</p>
+    <p class="hint">Presione otra tecla para continuar</p>
+</div>
+
+<div id="start_instructions">
+    <h3>Parte {{ player.round_number }} de {{ Constants.num_rounds }}</h3>
+
+
+    {% if player.round_number == 1 %}
+        <p>
+            Ponga sus dedos INDICE en las teclas <span class="key">{{ Constants.capture_keycodes.left.1 }}</span>
+            y <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> para que puede responder rápidamente.
+        </p>
+    {% endif %}
+
+    {% if block_def.notice %}
+        <p style="font-weight: bold">{{ block_def.notice }}</p>
+    {% endif %}
+
+    <p class="keys">
+        {% for side in instructions %}
+            Presiones <span class="key">{{ side.key }}</span> para palabras que pertenecen
+            {% if side.classes|length == 1  %}al grupo{% else %}a los grupos{% endif %}
+
+            {% for class in side.classes %}
+                <span class="class {{ class.class }}">{{ class.label }}</span>
+                {% if side.classes|length > 1 and not forloop.last %}
+                    o
+                {% endif %}
+            {% endfor %}
+
+            {% if not forloop.last %}<br>{% endif %}
+        {% endfor %}
+    </p>
+
+    {% if player.round_number == 1 %}
+        <p>Le mostraremos una palabra después de la otra</p>
+    {% endif %}
+
+    <p>
+        Cuando presione la letra INCORRECTA, una <span class="red_x">X</span> roja aparecerá. Presione la otra tecla para continuar.<br>
+
+        Trate de clasificar las palabras <span style="text-decoration: underline">tan rápido como pueda</span>.
+    </p>
+
+    <p style="text-align: center">
+        Presione la <span class="key">BARRA ESPACIADORA</span>, para comenzar con la parte {{ player.round_number }}.
+    </p>
+
+    {% next_button %}
+</div>
 
 {% endblock %}

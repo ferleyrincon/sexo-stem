@@ -11,7 +11,7 @@ from collections import defaultdict
 from django.conf import settings
 
 from ._builtin import Page
-from .models import STIMULI, STIMULI_LABELS, BLOCKS, Constants, Trial
+from .models import STIMULI, STIMULI_LABELS, BLOCKS, Constants, Trial, IMAGES
 
 
 class Intro(Page):
@@ -41,14 +41,21 @@ class IATPage(Page):
 
         instructions = []
         stimulus_level_sides = defaultdict(dict)
-        for side in ('left', 'right'):
-            side_def = block_def[side]
-            instructions.append({
-                'classes': [{'class': cls, 'label': STIMULI_LABELS[(cls, lvl)]} for cls, lvl in side_def],
-                'side': side,
-                'key': Constants.capture_keycodes[side][1]
-            })
-
+        for side in ('left', 'center', 'right'):
+            if side is 'center':
+                side_def = [('concepts', 'word')]
+                instructions.append({
+                    'classes': [{'class': cls, 'label': 'N/A'}], 
+                    'side': 'center',
+                    'key': 'N/A',
+                    'image': 'N/A'})
+            else:
+                side_def = block_def[side]
+                instructions.append({
+                    'classes': [{'class': cls, 'label': STIMULI_LABELS[(cls, lvl)], 'image': IMAGES[(cls, lvl)]} for cls, lvl in side_def],
+                    'side': side,
+                    'key': Constants.capture_keycodes[side][1]
+                })
             for cls, lvl in side_def:
                 stimulus_level_sides[cls][lvl] = side
 

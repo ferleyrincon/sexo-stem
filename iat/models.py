@@ -54,6 +54,14 @@ STIMULI_LABELS = {
     ('concepts', 'no_stem'): 'No STEM (letras)',
 }
 
+# Images of the attributes and concepts
+IMAGES = {
+    ('attributes', 'woman'): 'mujer.png',
+    ('attributes', 'man'): 'hombre.png',
+    ('concepts', 'stem'): 'numeros.png',
+    ('concepts', 'no_stem'): 'a-b-c.png',
+}
+
 #
 # configuration of practice and Prueba blocks
 #
