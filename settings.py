@@ -34,11 +34,27 @@ BROWSER_COMMAND = '/usr/bin/chromium-browser'
 
 ROOM_DEFAULTS = {}
 
-ROOMS = []
+ROOMS = [
+    dict(
+        name='PC',
+        display_name='PC',
+        participant_label_file='_rooms/PC.txt',
+    ),
+        dict(
+        name='PC2',
+        display_name='PC2',
+        participant_label_file='_rooms/PC2.txt',
+    ),
+        dict(
+        name='PC3',
+        display_name='PC3',
+        participant_label_file='_rooms/PC3.txt',
+    ),
+]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'es'
 TIME_ZONE = 'UTC'
 
 # e.g. EUR, GBP, CNY, JPY
