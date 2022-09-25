@@ -22,23 +22,17 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    {
-        'name': 'iat',
-        'display_name': "Implicit Association Test (IAT)",
-        'num_demo_participants': 4,
-        'app_sequence': ['iat']
-    },
-        {
-        'name': 'survey',
-        'display_name': "survey",
-        'num_demo_participants': 4,
-        'app_sequence': ['survey']
-    }
-        dict(
-       name='app',
-       display_name="Colegios",
+    dict(
+       name='questions',
+       display_name="questions",
        num_demo_participants=1,
        app_sequence=['iat','survey' ]
+    ),
+    dict(
+       name='pruebas',
+       display_name="pruebas",
+       num_demo_participants=1,
+       app_sequence=['survey']
     ),
 ]
 
