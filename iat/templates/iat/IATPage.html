@@ -209,12 +209,12 @@ function advanceProgressBar() {
 </div>
 
 <div id="start_instructions">
-    <h3>Parte {{ player.round_number }} de {{ Constants.num_rounds }}</h3>
+    <h3><b>PARTE {{ player.round_number }} DE {{ Constants.num_rounds }}</b></h3>
 
 
     {% if player.round_number == 1 %}
         <p>
-            Ponga sus dedos INDICE en las teclas <span class="key">{{ Constants.capture_keycodes.left.1 }}</span>
+            Ponga sus dedos INDICES en las teclas <span class="key">{{ Constants.capture_keycodes.left.1 }}</span>
             y <span class="key">{{ Constants.capture_keycodes.right.1 }}</span> para que puede responder rápidamente.
         </p>
     {% endif %}
@@ -226,15 +226,16 @@ function advanceProgressBar() {
     <p class="keys">
         {% for side in instructions %}
             {% if side.side != "center" %}
-                Presiones <span class="key">{{ side.key }}</span> para palabras que pertenecen
+                Presione <span class="key">{{ side.key }}</span> para palabras que pertenecen 
                 {% if side.classes|length == 1  %}al grupo{% else %}a los grupos{% endif %}
-
+            <b>
                 {% for class in side.classes %}
                     <span class="class {{ class.class }}">{{ class.label }}</span>
                     {% if side.classes|length > 1 and not forloop.last %}
                         o
                     {% endif %}
                 {% endfor %}
+            </b>
 
                 {% if not forloop.last %}<br>{% endif %}
             {% endif %}
@@ -242,7 +243,7 @@ function advanceProgressBar() {
     </p>
 
     {% if player.round_number == 1 %}
-        <p>Le mostraremos una palabra después de la otra</p>
+        <p>Le iremos mostrando una palabra a la vez.</p>
     {% endif %}
 
     <p>

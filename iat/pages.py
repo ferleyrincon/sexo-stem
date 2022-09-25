@@ -13,6 +13,15 @@ from django.conf import settings
 from ._builtin import Page
 from .models import STIMULI, STIMULI_LABELS, BLOCKS, Constants, Trial, IMAGES
 
+class welcome(Page):
+    form_model = 'player'
+    form_fields = ['identificador', 'treatment']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
+    def before_next_page(self):
+        self.subsession.set_id_players()
 
 class Intro(Page):
     def is_displayed(self):
@@ -28,7 +37,6 @@ class Intro(Page):
                 for c in ('attributes', 'concepts')
                 for l in STIMULI[c].keys()]
         }
-
 
 class IATPage(Page):
     """
@@ -129,6 +137,7 @@ class Outro(Page):
 
 
 page_sequence = [
+    welcome,
     Intro,
     IATPage,
     Outro

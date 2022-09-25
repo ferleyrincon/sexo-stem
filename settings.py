@@ -27,7 +27,19 @@ SESSION_CONFIGS = [
         'display_name': "Implicit Association Test (IAT)",
         'num_demo_participants': 4,
         'app_sequence': ['iat']
+    },
+        {
+        'name': 'survey',
+        'display_name': "survey",
+        'num_demo_participants': 4,
+        'app_sequence': ['survey']
     }
+        dict(
+       name='app',
+       display_name="Colegios",
+       num_demo_participants=1,
+       app_sequence=['iat','survey' ]
+    ),
 ]
 
 BROWSER_COMMAND = '/usr/bin/chromium-browser'

@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    ¿Hombre o Mujer?
+{% endblock %}
+
+{% block content %}
+<p>
+    Imagine que se eligen al azar una mujer y un hombre por cada curso de grado 11 de los tres colegios en los que se va a realizar esta actividad. 
+    Piense que los estudiantes elegidos participan en una competencia que incluye 6 pruebas.<br> 
+    ¿Cuál cree que será el <b>SEXO</b> de la persona con el <b>MEJOR PUNTAJE</b> en las siguientes pruebas? 
+</p>
+
+{% formfields %}
+
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,272 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+{% endblock %}
+
+{% block scripts %}
+    <!-- custom style sheet-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<h2>¿Qué tan de acuerdo está con las siguientes afirmaciones?</h4>
+
+<br/><span> Por favor indique qué tan de acuerdo está con respecto a las siguientes afirmaciones.  
+    <br> Seleccione un solo número de acuerdo con la siguiente escala: <br> <b>(1) muy en desacuerdo</b>, (2) en desacuerdo, (3) ni de acuerdo ni en desacuerdo, (4) De acuerdo, <b>(5) muy de acuerdo.</b> </span>
+<br/>
+<table class="table">
+   <tr>
+     <td class="td_q">Los trabajos relacionados con las ciencias requieren muchos años de estudio.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science1" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science1" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science1" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science1" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science1" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">Los trabajos relacionados con las ciencias son monótonos.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science2" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science2" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science2" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science2" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science2" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+     <td class="td_q">Los trabajos relacionados con las ciencias son solitarios.</td>
+     <td class="d-flex">
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science3" id="op1" value="1"><br>
+             <label class="form-check-label" for="op1">1</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science3" id="op2" value="2"><br>
+             <label class="form-check-label" for="op2">2</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science3" id="op3" value="3"><br>
+             <label class="form-check-label" for="op3">3</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science3" id="op4" value="4"><br>
+             <label class="form-check-label" for="op4">4</label>
+         </div>
+         <div class="form-check">
+             <input class="form-check-input" type="radio" name="p_science3" id="op5" value="5"><br>
+             <label class="form-check-label" for="op5">5</label>
+         </div>
+     </td>
+   </tr>
+   <tr>
+    <td class="td_q">Los trabajos relacionados con las ciencias pagan salarios altos.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science4" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science4" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science4" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science4" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science4" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">Es difícil tener una vida familiar plena cuando se trabaja como científico.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science5" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science5" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science5" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science5" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_science5" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">Los hombres nacen con habilidades diferentes a las mujeres.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender1" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender1" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender1" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender1" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender1" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">Las mujeres son mejores en matemáticas que los hombres.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender2" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender2" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender2" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender2" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender2" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+    <td class="td_q">Los hombres son mejores científicos que las mujeres.</td>
+    <td class="d-flex">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender3" id="op1" value="1"><br>
+            <label class="form-check-label" for="op1">1</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender3" id="op2" value="2"><br>
+            <label class="form-check-label" for="op2">2</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender3" id="op3" value="3"><br>
+            <label class="form-check-label" for="op3">3</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender3" id="op4" value="4"><br>
+            <label class="form-check-label" for="op4">4</label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="p_gender3" id="op5" value="5"><br>
+            <label class="form-check-label" for="op5">5</label>
+        </div>
+    </td>
+  </tr>
+  <tr>
+   <td class="td_q">Las mujeres son mejores programadoras que los hombres.</td>
+   <td class="d-flex">
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender4" id="op1" value="1"><br>
+           <label class="form-check-label" for="op1">1</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender4" id="op2" value="2"><br>
+           <label class="form-check-label" for="op2">2</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender4" id="op3" value="3"><br>
+           <label class="form-check-label" for="op3">3</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender4" id="op4" value="4"><br>
+           <label class="form-check-label" for="op4">4</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender4" id="op5" value="5"><br>
+           <label class="form-check-label" for="op5">5</label>
+       </div>
+   </td>
+ </tr>
+ <tr>
+   <td class="td_q">Las ingenierías son profesiones para hombres.</td>
+   <td class="d-flex">
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender5" id="op1" value="1"><br>
+           <label class="form-check-label" for="op1">1</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender5" id="op2" value="2"><br>
+           <label class="form-check-label" for="op2">2</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender5" id="op3" value="3"><br>
+           <label class="form-check-label" for="op3">3</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender5" id="op4" value="4"><br>
+           <label class="form-check-label" for="op4">4</label>
+       </div>
+       <div class="form-check">
+           <input class="form-check-input" type="radio" name="p_gender5" id="op5" value="5"><br>
+           <label class="form-check-label" for="op5">5</label>
+       </div>
+   </td>
+ </tr>
+ </table>
+{% next_button %}
+
+{% endblock %}

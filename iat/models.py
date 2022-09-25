@@ -30,6 +30,7 @@ author = 'Markus Konrad <markus.konrad@wzb.eu>'
 
 doc = """
 IAT – Implicit Association Test Gender-STEM
+Adapted from: https://github.com/WZBSocialScienceCenter/otree_iat/blob/master/iat/models.py
 """
 
 #
@@ -40,19 +41,19 @@ IAT – Implicit Association Test Gender-STEM
 STIMULI = {
     'attributes': {
         'woman': ['mamá', 'mujer', 'chica', 'femenina', 'hija'],
-        'man': ['papá', 'hombre', 'chico', 'masculino', 'hijo']
+        'man':   ['papá', 'hombre', 'chico', 'masculino', 'hijo']
     },
     'concepts': {
-        'stem': ['matemáticas', 'química', 'física', 'naturales', 'ingenierías'],
-        'no_stem': ['español', 'filosofía', 'historia', 'sociales', 'humanidades']
+        'stem':    ['matemáticas', 'naturales'  , 'informática' , 'ingenierías', 'química'  ],
+        'no_stem': ['español'    , 'sociales'   , 'artes'       , 'humanidades', 'filosofía']
     }
 }
 
 STIMULI_LABELS = {
     ('attributes', 'woman'): 'Mujer',
     ('attributes', 'man'): 'Hombre',
-    ('concepts', 'stem'): 'STEM (números)',
-    ('concepts', 'no_stem'): 'No STEM (letras)',
+    ('concepts', 'stem'): ' Números (STEM)',
+    ('concepts', 'no_stem'): 'Letras (No STEM)',
 }
 
 # Images of the attributes and concepts
@@ -69,14 +70,14 @@ IMAGES = {
 
 BLOCKS = [
     {   # 1
-        'label': 'Practice 1',
+        'label': 'Practica 1',
         'n': 10,      # this must match the number of stimuli per side
         'left': [('concepts', 'no_stem')],
         'right': [('concepts', 'stem')],
         'is_practice': True
     },
     {   # 2
-        'label': 'Practice 2',
+        'label': 'Practica 2',
         'n': 10,
         'left': [('attributes', 'man')],
         'right': [('attributes', 'woman')],
@@ -107,12 +108,12 @@ BLOCKS = [
         ]
     },
     {   # 5
-        'label': 'Practice 3 (reversed)',
+        'label': 'Practica 3 (invertida)',
         'n': 10,
         'left': [('concepts', 'stem')],
         'right': [('concepts', 'no_stem')],
         'is_practice': True,
-        'notice': 'WATCH OUT, the categories switch sides!',
+        'notice': 'CUIDADO, ¡Las categorías cambiaron de lado!',
     },
     {  # 6
         'label': 'Prueba 3',
@@ -150,6 +151,10 @@ class Constants(BaseConstants):
 
 
 class Subsession(BaseSubsession):
+    def set_id_players(self):
+        for j in self.get_players():
+            j.set_id()
+
     def creating_session(self):
         """
         Prepare trials for each round. Generates Trial objects.
@@ -197,7 +202,15 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    pass
+    identificador = models.StringField(label='Recuerde que su código de participante está compuesto por las iniciales de su primer nombre y apellido seguido de su fecha de nacimiento. Por ejemplo, si usted se llama Andres Carrillo y usted nació el 11 de febrero de 2005, su código será AC11022005. Para iniciar por favor ingrese su código, escriba todo en mayúscula. Este código es importante para asegurar su participación en el resto de la actividad.')
+    treatment = models.IntegerField(
+    choices=[
+        [0, 'C'],
+        [1, 'T'],
+    ], label="Por favor seleccione el grupo al que fue asignado")
+
+    def set_id(self):
+        self.participant.vars['identificador'] = self.in_round(1).identificador
 
 
 class Trial(Model):
