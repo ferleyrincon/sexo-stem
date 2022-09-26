@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    ¿Hombre o Mujer?
+{% endblock %}
+
+{% block content %}
+<p>
+    Cuando se publiquen los resultados del examen Saber 11, vamos comparar los resultados promedio de los hombres y mujeres de SU SALÓN en cada una de las pruebas.  
+    <i>También queremos conocer su predicción</i>.<br> 
+    ¿Qué subgrupo de su salón tendrá mejor desempeño? </i> 
+<br>
+</p>
+
+{% formfields %}
+
+    {% next_button %}
+
+{% endblock %}

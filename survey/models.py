@@ -61,26 +61,6 @@ class Player(BasePlayer):
 
     grupo_puntaje_global = models.IntegerField();
 
-    # Variables para tablas de 'de la escuela al trabajo'
-    l_study         = models.IntegerField();
-    l_militar       = models.IntegerField();
-    l_worker        = models.IntegerField();
-    l_selfemployed  = models.IntegerField();
-    l_nonwage       = models.IntegerField();
-    l_nini          = models.IntegerField();
-    m_study         = models.IntegerField();
-    m_militar       = models.IntegerField();
-    m_worker        = models.IntegerField();
-    m_selfemployed  = models.IntegerField();
-    m_nonwage       = models.IntegerField();
-    m_nini          = models.IntegerField();
-    h_study         = models.IntegerField();
-    h_militar       = models.IntegerField();
-    h_worker        = models.IntegerField();
-    h_selfemployed  = models.IntegerField();
-    h_nonwage       = models.IntegerField();
-    h_nini          = models.IntegerField();
-
     educ_type = models.IntegerField(
     choices=[
         [1,'Técnica'],
@@ -92,59 +72,9 @@ class Player(BasePlayer):
     educ_university = models.StringField(label="Escriba el nombre de la institución educativa en la que desea estudiar. También puede escribir NO SÉ")
     educ_university2 = models.StringField(label="¿Tiene una segunda opción? En caso de que sí, escriba el nombre de la institución educativa donde también le gustaría estudiar. También puede escribir NO SÉ o NO TENGO SEGUNDA OPCIÓN:")
 
-    efficacy1 =  models.IntegerField() #Técnico
-    check_slider_efficacy1 =  models.IntegerField()
-
-    efficacy2 =  models.IntegerField() #Militar
-    check_slider_efficacy2 =  models.IntegerField()
-
-    efficacy3 =  models.IntegerField() #Emprendedor
-    check_slider_efficacy3 =  models.IntegerField()
-
-    efficacy4 =  models.IntegerField() #Título profesional
-    check_slider_efficacy4 =  models.IntegerField()
-
-
-    educ_inc1 =  models.IntegerField() 
-    check_slider_educ_inc1 =  models.IntegerField()
-
-    educ_inc2 =  models.IntegerField() 
-    check_slider_educ_inc2 =  models.IntegerField()
-
-    educ_inc3 =  models.IntegerField() 
-    check_slider_educ_inc3 =  models.IntegerField()
-
-    educ_inc4 =  models.IntegerField() 
-    check_slider_educ_inc4 =  models.IntegerField()
-
-    educ_inc5 =  models.IntegerField() 
-    check_slider_educ_inc5 =  models.IntegerField()
-
-
-
     educsup =  models.IntegerField()
     check_slider_educsup=  models.IntegerField()
 
-    educ_barrier1 =  models.IntegerField()
-    check_slider_educ_barrier1=  models.IntegerField()
-
-    educ_barrier2 =  models.IntegerField()
-    check_slider_educ_barrier2=  models.IntegerField()
-
-    educ_barrier3 =  models.IntegerField()
-    check_slider_educ_barrier3=  models.IntegerField()
-
-    educ_barrier4 =  models.IntegerField()
-    check_slider_educ_barrier4=  models.IntegerField()
-
-    educ_barrier5 =  models.IntegerField()
-    check_slider_educ_barrier5=  models.IntegerField()
-
-    educ_barrier6 =  models.IntegerField()
-    check_slider_educ_barrier6=  models.IntegerField()
-
-    educ_barrier7 =  models.IntegerField()
-    check_slider_educ_barrier7=  models.IntegerField()
 
 
     p_vocational = models.IntegerField(
@@ -153,45 +83,37 @@ class Player(BasePlayer):
         [2, 'No'],
     ], label="1. ¿Ha participado antes en alguna actividad de orientación vocacional/profesional?")
 
-    p_preicfes = models.IntegerField(
-    choices=[
-        [1, 'Sí'],
-        [2, 'Sí, en el colegio y NO tuve que pagar'],
-        [3, 'Sí, en el colegio y tuve que pagar'],
-        [4, 'Sí, fuera del colegio y NO tuve que pagar'],
-        [5, 'Sí, fuera del colegio y tuve que pagar'],
-
-    ], label="2. ¿Ha participado antes en alguna actividad de preparación para el Saber 11 (pre-icfes)?")
-
     p_sex = models.IntegerField(
     choices=[
-        [1, 'Hombre'],
-        [2, 'Mujer'],
-        [3, 'Otro'],
-    ], label="3. ¿Cuál es su sexo?")
+        [0, 'Hombre'],
+        [1, 'Mujer'],
+    ], label="2. ¿Cuál es su sexo?")
 
-    p_age = models.IntegerField(label="4. Edad")
+    p_age = models.IntegerField(label="3. ¿Cuántos años cumplidos tiene?")
 
-    p_work = models.IntegerField(
+    p_colombian = models.IntegerField(
     choices=[
-        [1, 'No, solo estudio.'],
-        [2, 'Sí, para ganar dinero para mis gastos.'],
-        [3, 'Sí, para ayudar con los gastos familiares.'],
-        [4, 'Sí, para obtener experiencia laboral.'],
-        [5, 'Sí, para ganar dinero para mis gastos'],
-        [6, 'Sí, para hacer contactos que podrían llevarle a encontrar un trabajo. '],
-        [7, 'Sí, por otra razón '],
-    ], label="5. ¿Ha trabajado y estudiado al mismo tiempo? ¿Cuál fue su motivo principal para trabajar mientras estudiaba?")
+        [1, 'Colombia'],
+        [2, 'Otro país'],
+    ], label="4. País de nacimiento:")
 
-    p_hwork = models.IntegerField(min=0, max=48, label="6. ¿Cuántas horas trabajó usted durante la semana pasada? (puede escribir 0)")
-
-    p_wage = models.IntegerField(
+    p_urban = models.IntegerField(
     choices=[
-        [1, 'No.'],
-        [2, 'Si, en efectivo.'],
-        [3, 'Si, en especie.'],
-        [4, 'Si, en efectivo y especie.'],
-    ], label="7. ¿Usted recibe algún tipo de remuneración por trabajar?")
+        [1, 'Rural'],
+        [2, 'Urbana'],
+    ], label="5. Área de residencia:")
+
+    p_tech = models.IntegerField(
+    choices=[
+        [1, 'Actividad física y deporte.'],
+        [2, 'Administración empresarial.'],
+        [3, 'Dibujo técnico.'],
+        [4, 'Electricidad y electrónica.'],
+        [5, 'Mecánica automotriz.'],
+        [6, 'Mecánica industrial.'],
+        [7, 'Sistemas.'],
+        [8, 'Otra.']
+    ], label="6. Seleccione la especialidad en la cual actualmente se encuentra")
 
     p_desertion = models.IntegerField(
     choices=[
@@ -202,69 +124,46 @@ class Player(BasePlayer):
         [5, 'Sí, por falta de interés en estudiar.'],
         [6, 'Sí, por razones económicas.'],
         [7, 'Sí, por razones de seguridad (nivel de violencia en la zona).'],
-    ], label="8. ¿Alguna vez tuvo que suspender sus estudios?")
+    ], label="7. ¿Alguna vez tuvo que suspender sus estudios?")
 
     p_years = models.IntegerField(
     choices=[
-        [1, 'No, no he perdido ningún año.'],
-        [2, 'Sí, estudié y no aprobé los exámenes.'],
-        [3, 'Sí, por dificultades en el colegio con compañeros, docentes o directivos.'],
-        [4, 'Sí, por enfermedad.'],
-        [5, 'Sí, no me interesaban los temas.'],
-        [6, 'Sí, por razones económicas.'],
-        [7, 'Sí, tenía poco tiempo después del colegio para estudiar.'],
-        [8, 'Sí, por razones de seguridad (nivel de violencia en la zona).']
-    ], label="9. ¿Ha reprobado algún año?")
+        [0, 'No, no he perdido ningún año.'],
+        [1, 'Sí, estudié y no aprobé los exámenes.'],
+        [2, 'Sí, por dificultades en el colegio con compañeros, docentes o directivos.'],
+        [3, 'Sí, por enfermedad.'],
+        [4, 'Sí, no me interesaban los temas.'],
+        [5, 'Sí, por razones económicas.'],
+        [6, 'Sí, tenía poco tiempo después del colegio para estudiar.'],
+        [7, 'Sí, por razones de seguridad (nivel de violencia en la zona).']
+    ], label="8. ¿Ha reprobado algún año?")
 
     p_internet = models.IntegerField(
     choices=[
-        [1, 'No.'],
-        [2, 'Sí, al menos un teléfono móvil con datos.'],
-        [3, 'Sí, un computador portátil con conexión a internet.'],
-        [4, 'Sí, un computador de escritorio con conexión a internet.'],
-    ], label="10. ¿En su hogar cuenta con acceso o conexión a internet?")
+        [0, 'No.'],
+        [1, 'Sí, al menos un teléfono móvil con datos.'],
+        [2, 'Sí, un computador portátil con conexión a internet.'],
+        [3, 'Sí, un computador de escritorio con conexión a internet.'],
+    ], label="9. ¿En su hogar cuenta con acceso o conexión a internet?")
 
-    p_tinternet = models.IntegerField(
+    p_lavadora = models.IntegerField(
     choices=[
-        [1, 'No Navega en Internet'],
-        [2, '30 minutos o menos'],
-        [3, 'Entre 30 y 60 minutos'],
-        [4, 'Entre 1 y 3 horas'],
-        [5, 'Más de 3 horas'],
-    ], label="11. Usualmente, ¿cuánto tiempo al DÍA dedica a navegar en internet?")
+        [0, 'No.'],
+        [1, 'Sí'],
+    ], label="10. ¿Su hogar cuenta con una máquina lavadora de ropa?") 
 
     p_care = models.IntegerField(
     choices=[1, 2, 3, 4, 5],
     widget=widgets.RadioSelectHorizontal,
-    label="12. De 1 (nada) a 5 (completamente), ¿qué tanto cree que ayudar en su casa dificulta su proceso de aprendizaje?")
+    label="11. De 1 (nada) a 5 (completamente), ¿qué tanto cree que ayudar en su casa dificulta su proceso de aprendizaje?")
 
-    p_family = models.IntegerField(min=0, max=15, label="13.	¿Cuántas personas conforman el hogar donde vive actualmente, incluido usted? ")
+    p_family = models.IntegerField(min=0, max=15, label="12. ¿Cuántas personas conforman el hogar donde vive actualmente, incluido usted? ")
+
+    p_siblings = models.IntegerField(min=0, max=10, label="13. ¿Cuántas hermanas y hermanos tiene usted en total? ")
 
     p_rooms = models.IntegerField(min=0, max=10, label="14.	En total, ¿en cuántos cuartos duermen las personas de su hogar?")
 
-    p_poverty = models.IntegerField(
-    choices=[
-        [1, 'Muy buenas'],
-        [2, 'Buenas'],
-        [3, 'Regulares'],
-        [4, 'Malas'],
-    ], label="15. ¿Cómo describiría las condiciones económicas de su hogar?")
-
-    p_migration = models.IntegerField(
-    choices=[
-        [1, 'No.'],
-        [2, 'Sí, por trabajo.'],
-        [3, 'Sí, por educación.'],
-        [4, 'Sí, por salud.'],
-        [5, 'Sí, por las condiciones de seguridad.'],
-        [6, 'Sí, otra razón.'],
-    ], label="16. El siguiente año, ¿cree que se va a ir a vivir a otro municipio?")
-
-    p_health = models.IntegerField(
-    choices=[
-        [1,'Subsidiado'],
-        [2,'Contributivo (incluye regímenes especiales)']
-    ], label="17. ¿A qué régimen de seguridad social en salud pertenece?")
+    p_estrato = models.IntegerField(min=0, max=6, label="15.Según el recibo de energía ¿Cuál es el estrato de la vivienda en la que reside con sus padres o núcleo familiar?  (Escriba un número entre 0 y 6, donde cero es igual a sin estrato) ")
 
     p_pension2 = models.IntegerField(
     choices=[
@@ -275,41 +174,73 @@ class Player(BasePlayer):
         [5,'Pagando un seguro por su cuenta'],
         [6,'Preparando a los hijos para que puedan ayudarlos en su vejez'],
         [7,'Nada'],
-    ], label="18. ¿Qué están haciendo (hicieron) sus padres para mantenerse económicamente en la vejez?")
+    ], label="16. ¿Qué están haciendo (hicieron) sus padres para mantenerse económicamente en la vejez?")
 
-    ocu_mother = models.IntegerField(
+    edu_father = models.IntegerField(
     choices=[
-        [1,'Empleada con cargo como director o gerente general'],
-        [2,'Empleada de nivel auxiliar o administrativo'],
-        [3,'Empleada de nivel directivo'],
-        [4,'Empleada de nivel técnico o profesional'],
-        [5,'Empleada obrera u operaria'],
-        [6,'Empresaria'],
-        [7,'Pequeña empresaria'],
-        [8,'Profesional independiente'],
-        [9,'Trabajadora por cuenta propia'],
-        [10,'Hogar'],
-        [11,'Pensionada'],
-        [12,'Desempleada'],
-        [13,'Otra actividad u ocupación'],
-    ], label="19. Ocupación u oficio de la madre")
+        [1,'Ninguno'],
+        [2,'Primaria'],
+        [3,'Secundaria (Bachillerato)'],
+        [4,'Técnico o tecnológico'],
+        [5,'Pregrado (Universitario)'],
+        [6,'Posgrado (Especialización, Maestría o Doctorado)'],
+        [7,'No sabe'],
+    ], label="17. ¿Cuál es el nivel educativo más alto alcanzado por su padre")
+
+    edu_mother = models.IntegerField(
+    choices=[
+        [1,'Ninguno'],
+        [2,'Primaria'],
+        [3,'Secundaria (Bachillerato)'],
+        [4,'Técnico o tecnológico'],
+        [5,'Pregrado (Universitario)'],
+        [6,'Posgrado (Especialización, Maestría o Doctorado)'],
+        [7,'No sabe'],
+    ], label="18. ¿Cuál es el nivel educativo más alto alcanzado por su madre")
+
+    career_father= models.StringField(label="19.Escriba el nombre de la profesión de su padre")
+
+    career_mother= models.StringField(label="20.Escriba el nombre de la profesión de su madre")
+
+    comments= models.StringField(label="Comentario")
 
     ocu_father = models.IntegerField(
     choices=[
-        [1,'Empleado con cargo como director o gerente general'],
-        [2,'Empleado de nivel auxiliar o administrativo'],
-        [3,'Empleado de nivel directivo'],
-        [4,'Empleado de nivel técnico o profesional'],
-        [5,'Empleado obrero u operario'],
-        [6,'Empresario'],
-        [7,'Pequeño empresario'],
-        [8,'Profesional independiente'],
-        [9,'Trabajador por cuenta propia'],
-        [10,'Hogar'],
-        [11,'Pensionado'],
-        [12,'Desempleado'],
-        [13,'Otra actividad u ocupación'],
-    ], label="20. Ocupación u oficio del padre")
+        [1,'Es agricultor, pesquero o jornalero.'],
+        [2,'Es dueño de un negocio grande, tiene un cargo de nivel directivo o gerencial.'],
+        [3,'Es dueño de un negocio pequeño (tiene pocos empleados o no tiene, por ejemplo, tienda, papelería, etc.'],
+        [4,'Es operario de máquinas o conduce vehículos (taxista, chofer).'],
+        [5,'Es vendedor o trabaja en atención al público.'],
+        [6,'Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)'],
+        [7,'Trabaja como personal de limpieza, mantenimiento, seguridad o construcción. '],
+        [8,'Trabaja como profesional (por ejemplo, médico, abogado, ingeniero).'],
+        [9,'Trabajadora por cuenta propia'],
+        [10,'Trabaja en el hogar (por ejemplo, actividades del hogar o cuidado de personas)'],
+        [11,'Trabaja por cuenta propia (por ejemplo, plomero, electricista).'],
+        [12,'Pensionado.'],
+        [13,'No trabaja o estudia.'],
+        [14,'No sabe'],
+        [15,'No responde'],
+    ], label="21. Ocupación u oficio del padre")
+
+    ocu_mother= models.IntegerField(
+    choices=[
+        [1,'Es agricultora, pesquera o jornalera.'],
+        [2,'Es dueña de un negocio grande, tiene un cargo de nivel directivo o gerencial.'],
+        [3,'Es dueña de un negocio pequeño (tiene pocos empleados o no tiene, por ejemplo, tienda, papelería, etc.'],
+        [4,'Es operaria de máquinas o conduce vehículos (taxista, chofer).'],
+        [5,'Es vendedora o trabaja en atención al público.'],
+        [6,'Tiene un trabajo de tipo auxiliar administrativo (por ejemplo, secretario o asistente)'],
+        [7,'Trabaja como personal de limpieza, mantenimiento, seguridad o construcción. '],
+        [8,'Trabaja como profesional (por ejemplo, médico, abogado, ingeniero).'],
+        [9,'Trabajadora por cuenta propia'],
+        [10,'Trabaja en el hogar (por ejemplo, actividades del hogar o cuidado de personas)'],
+        [11,'Trabaja por cuenta propia (por ejemplo, plomero, electricista).'],
+        [12,'Pensionada.'],
+        [13,'No trabaja o estudia.'],
+        [14,'No sabe'],
+        [15,'No responde'],
+    ], label="22. Ocupación u oficio del madre")
     
     occupation_1 = models.StringField();
     occupation_2 = models.StringField();
@@ -325,6 +256,11 @@ class Player(BasePlayer):
     e_spa = models.IntegerField(choices=[[0, 'Hombre'],[1, 'Mujer']], widget=widgets.RadioSelectHorizontal, label="Español")
     e_soc = models.IntegerField(choices=[[0, 'Hombre'],[1, 'Mujer']], widget=widgets.RadioSelectHorizontal, label="Sociales (Geografía, Historia y Democracia)")
     e_art = models.IntegerField(choices=[[0, 'Hombre'],[1, 'Mujer']], widget=widgets.RadioSelectHorizontal, label="Artes")
+
+    i_sci = models.IntegerField(choices=[[0, 'Hombres'],[1, 'Mujeres']], widget=widgets.RadioSelectHorizontal, label="Ciencias Naturales")
+    i_mat = models.IntegerField(choices=[[0, 'Hombres'],[1, 'Mujeres']], widget=widgets.RadioSelectHorizontal, label="Matemáticas")
+    i_spa = models.IntegerField(choices=[[0, 'Hombres'],[1, 'Mujeres']], widget=widgets.RadioSelectHorizontal, label="Lectura Crítica")
+    i_soc = models.IntegerField(choices=[[0, 'Hombres'],[1, 'Mujeres']], widget=widgets.RadioSelectHorizontal, label="Sociales y Ciudadanas")
 
     p_science1 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
@@ -393,15 +329,144 @@ class Player(BasePlayer):
     p_jobsci3 = models.PositiveIntegerField(choices=[1,2,3,4,5],
                                        widget=widgets.RadioSelectHorizontal(),
                                        verbose_name="Las perspectivas de carrera y de ingresos juegan un papel importante en mi elección de estudio."
-                                       )  
-
-
-
-
-
-
-
-
-
-
-
+                                       )
+    l_mat = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Matemáticas"
+                                       )
+    l_spa = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Español"
+                                       )
+    l_tec = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Informática y Tecnología"
+                                       )     
+    l_art = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Artes"
+                                        )  
+    l_sci = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Naturales (Biología, Física y Química)"
+                                       )    
+    l_soc = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Sociales (Geografía, Historia y Democracia)"
+                                       )                                     
+    p_mat = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Matemáticas"
+                                       )
+    p_spa = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Español"
+                                       )
+    p_tec = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Informática y Tecnología"
+                                       )     
+    p_art = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Artes"
+                                        )  
+    p_sci = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Naturales (Biología, Física y Química)"
+                                       )    
+    p_soc = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Sociales (Geografía, Historia y Democracia)"
+                                       )
+    career1 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Administración, Contaduría Pública, Economía."
+                                       )      
+    career2 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Agronomía, Veterinaria, Zootecnia."
+                                       )      
+    career3 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Antropología, Psicología, Historia."
+                                       )      
+    career4 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Artes Plásticas, Visuales y Artes Afines."
+                                       )      
+    career5 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Biología, Física, Química."
+                                       )      
+    career6 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Deportes, Educación Física, Recreación."
+                                       )      
+    career7 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Derecho, Filosofía, Ciencia Política."
+                                       ) 
+    career8 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Diseño, Publicidad."
+                                       )          
+    career9 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Educación."
+                                       )      
+    career10 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Estadística."
+                                       )      
+    career11 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Ingeniería de Sistemas, Telemática y Afines."
+                                       )      
+    career12 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Ingeniería Electrónica, Telecomunicaciones y Afines."
+                                       )      
+    career13 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Ingeniería Mecánica, Industrial, Civil."
+                                       )      
+    career14 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Ingeniería Química, Metalúrgica, Petróleos."
+                                       ) 
+    career15 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Lenguas Modernas."
+                                       )      
+    career16 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Licenciaturas."
+                                       )      
+    career17 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Literatura."
+                                       )      
+    career18 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Matemáticas."
+                                       )      
+    career19 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Medicina, Enfermería, Bacteriología."
+                                       )      
+    career20 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="Odontología, Optometría, Instrumentación Quirúrgica."
+                                       )
+    p_risk = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="¿Qué tan dispuesto (a) está o no está usted a tomar riesgos?"
+                                       )
+    p_time = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="¿Qué tan dispuesto está a renunciar a algo que es beneficioso para usted en este momento a fin de obtener mayores beneficios en el futuro?"
+                                       )
+    p_time2 = models.PositiveIntegerField(choices=[1,2,3,4,5],
+                                       widget=widgets.RadioSelectHorizontal(),
+                                       verbose_name="¿Qué tan dispuesto está a posponer las tareas, incluso cuando sabe que sería mejor hacerlas de inmediato?"
+                                       )

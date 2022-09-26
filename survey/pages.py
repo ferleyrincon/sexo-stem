@@ -17,28 +17,6 @@ class saber11(Page):
     def is_displayed(self):
             return self.round_number == 1
 
-class selfefficacy(Page):
-    form_model = 'player'
-    form_fields = ['efficacy1','check_slider_efficacy1','efficacy2','check_slider_efficacy2','efficacy3','check_slider_efficacy3','efficacy4','check_slider_efficacy4']
-
-    def is_displayed(self):
-            return self.round_number == 1
-
-class barriers(Page):
-    form_model = 'player'
-    form_fields = ['educ_barrier1','check_slider_educ_barrier1','educ_barrier2','check_slider_educ_barrier2','educ_barrier3','check_slider_educ_barrier3','educ_barrier4','check_slider_educ_barrier4','educ_barrier5','check_slider_educ_barrier5','educ_barrier6','check_slider_educ_barrier6','educ_barrier7','check_slider_educ_barrier7']
-
-    def is_displayed(self):
-            return self.round_number == 1
-
-class income(Page):
-    form_model = 'player'
-    form_fields = ['educ_inc1','check_slider_educ_inc1','educ_inc2','check_slider_educ_inc2','educ_inc3','check_slider_educ_inc3','educ_inc4','check_slider_educ_inc4','educ_inc5','check_slider_educ_inc5']
-
-    def is_displayed(self):
-            return self.round_number == 1
-
-
 class education(Page):
     form_model = 'player'
     form_fields = ['educsup', 'check_slider_educsup']
@@ -52,7 +30,14 @@ class beliefs(Page):
 
     def is_displayed(self):
         return self.round_number == 1
-    
+
+class group(Page):
+    form_model = 'player'
+    form_fields = ['i_mat','i_spa','i_sci','i_soc']
+
+    def is_displayed(self):
+        return self.round_number == 1
+
 class explicit(Page):
     form_model = 'player'
     form_fields = ['e_tec','e_sci','e_mat','e_spa','e_soc','e_art']
@@ -74,77 +59,19 @@ class occupation(Page):
     def is_displayed(self):
         return self.round_number == 1
 
-class instructions_transitions(Page):
-    pass
-
-class instructions_icfes(Page):
-    pass
-
-class transition1(Page):
+class subjects(Page):
     form_model = 'player'
-    form_fields = ['l_study', 'l_militar', 'l_worker', 'l_selfemployed', 'l_nonwage', 'l_nini']
-    
+    form_fields = ['l_mat','l_art','l_soc','l_spa','l_sci','l_tec','p_sci','p_tec','p_spa','p_soc','p_art','p_mat']
+
     def is_displayed(self):
         return self.round_number == 1
 
-    def vars_for_template(self):
-        order = [0, 1, 2, 3, 4, 5]
-        random.shuffle(order)
-        shuffle_table = []
-        for i in order:
-            shuffle_table.append(Constants.table_options[i])
-        return {
-            "shuffle_table": shuffle_table
-        }
-
-
-class transition2(Page):
+class careers(Page):
     form_model = 'player'
-    form_fields = ['m_study', 'm_militar', 'm_worker', 'm_selfemployed', 'm_nonwage', 'm_nini']
-    
+    form_fields = ['career1','career2','career3','career4','career5','career6','career7','career8','career9','career10','career11','career12','career13','career14','career15','career16','career17','career18','career19','career20']
+
     def is_displayed(self):
         return self.round_number == 1
-
-    def vars_for_template(self):
-        order = [0, 1, 2, 3, 4, 5]
-        random.shuffle(order)
-        shuffle_table = []
-        for i in order:
-            shuffle_table.append(Constants.table_options[i])
-        return {
-            "shuffle_table": shuffle_table
-        }
-
-class transition3(Page):
-    form_model = 'player'
-    form_fields = ['h_study', 'h_militar', 'h_worker', 'h_selfemployed', 'h_nonwage', 'h_nini']
-    
-    def is_displayed(self):
-        return self.round_number == 1
-
-    def vars_for_template(self):
-        order = [0, 1, 2, 3, 4, 5]
-        random.shuffle(order)
-        shuffle_table = []
-        for i in order:
-            shuffle_table.append(Constants.table_options[i])
-        return {
-            "shuffle_table": shuffle_table
-        }
-
-class questions1(Page):
-    form_model = 'player'
-    form_fields = ['p_vocational', 'p_preicfes', 'p_sex', 'p_age', 'p_work', 'p_hwork', 'p_wage', 'p_desertion', 'p_years' ]
-    def is_displayed(self):
-        return self.round_number == 1
- 
-
-class questions2(Page):
-    form_model = 'player'
-    form_fields = ['p_internet', 'p_tinternet', 'p_care', 'p_family', 'p_rooms', 'p_poverty', 'p_migration', 'p_health', 'p_pension2', 'ocu_mother', 'ocu_father'] 
-    def is_displayed(self):
-        return self.round_number == 1
-
 
 class time(Page):
     form_model = 'player'
@@ -152,22 +79,22 @@ class time(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+class questions1(Page):
+    form_model = 'player'
+    form_fields = ['p_vocational', 'p_sex', 'p_age', 'p_colombian', 'p_urban', 'p_tech', 'p_desertion', 'p_years', 'p_internet', 'p_lavadora' ]
+
+    def is_displayed(self):
+        return self.round_number == 1
+ 
+
+class questions2(Page):
+    form_model = 'player'
+    form_fields = [ 'p_care', 'p_family', 'p_siblings', 'p_rooms', 'p_estrato', 'p_pension2', 'edu_father', 'edu_mother', 'career_father', 'career_mother','ocu_mother', 'ocu_father'] 
+    def is_displayed(self):
+        return self.round_number == 1
 
 class thanks(Page):
-    pass
+    form_model = 'player'
+    form_fields = [ 'comments'] 
 
-page_sequence = [beliefs, efficacy, saber11, explicit,occupation, occupation2,  education, questions1, questions2, thanks]
-
-#page_sequence = [occupation2, saber11, education, selfefficacy, barriers, income, instructions_transitions]
-
-#
-
-#transitions = [transition1, transition2, transition3]
-#random.shuffle(transitions)
-
-#for t in transitions:
-#    page_sequence.append(t)
-
-#for t in [instructions_icfes, icfes_m1, icfes_m2, icfes_l1, icfes_l2, icfes_s1, icfes_s2, icfes_n1, icfes_n2, time, questions1, questions2, thanks]:
-#    page_sequence.append(t)
-
+page_sequence = [beliefs, efficacy, group, saber11, explicit, subjects, occupation, occupation2, careers, education, time, questions1, questions2, thanks]
