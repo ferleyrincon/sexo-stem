@@ -40,7 +40,7 @@ BROWSER_COMMAND = '/usr/bin/chromium-browser'
 
 ROOM_DEFAULTS = {}
 
-ROOMS = [
+#ROOMS = [
 #    dict(
 #        name='PC',
 #        display_name='PC',
@@ -56,7 +56,7 @@ ROOMS = [
 #        display_name='PC3',
 #        participant_label_file='_rooms/PC3.txt',
 #    ),
-]
+#]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
