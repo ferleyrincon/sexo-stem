@@ -78,8 +78,8 @@ SECRET_KEY = '<SET_KEY_HERE>'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
 
-if importlib.util.find_spec('otreeutils'):
-    INSTALLED_APPS.append('otreeutils')
+#if importlib.util.find_spec('otreeutils'):
+#    INSTALLED_APPS.append('otreeutils')
 
-    if importlib.util.find_spec('pandas'):
-        ROOT_URLCONF = 'iat.urls'
+#    if importlib.util.find_spec('pandas'):
+#        ROOT_URLCONF = 'iat.urls'
