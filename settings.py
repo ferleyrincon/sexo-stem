@@ -40,12 +40,12 @@ BROWSER_COMMAND = '/usr/bin/chromium-browser'
 
 ROOM_DEFAULTS = {}
 
-#ROOMS = [
-#    dict(
-#        name='PC',
-#        display_name='PC',
-#        participant_label_file='_rooms/PC.txt',
-#    ),
+ROOMS = [
+    dict(
+        name='PC',
+        display_name='PC',
+        participant_label_file='_rooms/PC.txt',
+    ),
 #        dict(
 #        name='PC2',
 #        display_name='PC2',
@@ -56,7 +56,7 @@ ROOM_DEFAULTS = {}
 #        display_name='PC3',
 #        participant_label_file='_rooms/PC3.txt',
 #    ),
-#]
+]
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
@@ -78,8 +78,8 @@ SECRET_KEY = '<SET_KEY_HERE>'
 # if an app is included in SESSION_CONFIGS, you don't need to list it here
 INSTALLED_APPS = ['otree']
 
-if importlib.util.find_spec('otreeutils'):
-    INSTALLED_APPS.append('otreeutils')
+#if importlib.util.find_spec('otreeutils'):
+#    INSTALLED_APPS.append('otreeutils')
 
-    if importlib.util.find_spec('pandas'):
-        ROOT_URLCONF = 'iat.urls'
+#    if importlib.util.find_spec('pandas'):
+#        ROOT_URLCONF = 'iat.urls'
