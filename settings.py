@@ -22,11 +22,11 @@ SESSION_CONFIG_DEFAULTS = {
 }
 
 SESSION_CONFIGS = [
-    dict(
-       name='questions',
-       display_name="questions",
-       num_demo_participants=1,
-       app_sequence=['iat','survey' ]
+#    dict(
+#       name='questions',
+#       display_name="questions",
+#       num_demo_participants=1,
+#       app_sequence=['iat','survey' ]
     ),
     dict(
        name='pruebas',
@@ -41,21 +41,21 @@ BROWSER_COMMAND = '/usr/bin/chromium-browser'
 ROOM_DEFAULTS = {}
 
 ROOMS = [
-    dict(
-        name='PC',
-        display_name='PC',
-        participant_label_file='_rooms/PC.txt',
-    ),
-        dict(
-        name='PC2',
-        display_name='PC2',
-        participant_label_file='_rooms/PC2.txt',
-    ),
-        dict(
-        name='PC3',
-        display_name='PC3',
-        participant_label_file='_rooms/PC3.txt',
-    ),
+#    dict(
+#        name='PC',
+#        display_name='PC',
+#        participant_label_file='_rooms/PC.txt',
+#    ),
+#        dict(
+#        name='PC2',
+#        display_name='PC2',
+#        participant_label_file='_rooms/PC2.txt',
+#    ),
+#        dict(
+#        name='PC3',
+#        display_name='PC3',
+#        participant_label_file='_rooms/PC3.txt',
+#    ),
 ]
 
 # ISO-639 code
