@@ -27,7 +27,7 @@ SESSION_CONFIGS = [
 #       display_name="questions",
 #       num_demo_participants=1,
 #       app_sequence=['iat','survey' ]
-    ),
+#    ),
     dict(
        name='pruebas',
        display_name="pruebas",
